@@ -93,7 +93,9 @@
     margin-top: 23px;
     margin-right: 41px;
 }
-
+.head .nav-list .nav-item .active{
+    color: #52c41a;
+}
 .head .nav-list .nav-item a {
     font-size: 16px;
     color: #333333;
