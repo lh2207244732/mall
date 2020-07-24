@@ -19,7 +19,8 @@
     margin-right: 10px;
 }
 
-.top .nav-list .nav-item .icon-Cart {
+.top .nav-list .nav-item .shop-car {
+    margin-right: 10px;
     font-size: 12px;
 }
 
@@ -219,7 +220,7 @@
     color: #fff;
 }
 
-.hot .hot-left .icon-Cart {
+.hot .hot-left .shop-car {
     font-size: 37px;
     color: #fff;
 }
