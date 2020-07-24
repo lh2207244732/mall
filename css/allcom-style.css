@@ -1,0 +1,51 @@
+/* 顶部 */
+
+.top {
+    height: 30px;
+    line-height: 30px;
+    background-color: #f3f3f3;
+}
+
+.top .not-login {
+    float: left;
+}
+
+.top .nav-list {
+    float: right;
+}
+
+.top .nav-list .nav-item {
+    float: left;
+    margin-right: 10px;
+}
+
+.top .nav-list .nav-item .shopcar {
+    margin-right: 10px;
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+}
+
+
+/* 头部 */
+
+.head {
+    height: 110px;
+    background-color: #ffffff;
+}
+
+
+/* 主体 */
+
+.main {
+    height: 800px;
+    background-color: #eeeeee;
+}
+
+
+/* 底部 */
+
+.footer {
+    height: 252px;
+    background-color: #2f2f2f;
+}
