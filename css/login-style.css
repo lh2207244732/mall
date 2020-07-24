@@ -1,0 +1,46 @@
+/* 头部start  */
+
+.header {
+    height: 60px;
+    line-height: 60px;
+    background-color: #ffffff;
+}
+
+.header .header-title a {
+    font-size: 30px;
+    font-weight: bold;
+    color: #52c41a;
+}
+
+
+/* 头部end  */
+
+
+/* 主体部分start  */
+
+.main {
+    height: 800px;
+    background-color: #bdbdbd;
+    overflow: hidden;
+}
+
+.main .login {
+    margin: 50px auto;
+    width: 410px;
+    height: 288px;
+    background-color: #fff;
+}
+
+
+/* 主体部分end */
+
+
+/* 底部start */
+
+.footer {
+    height: 252px;
+    background-color: #2f2f2f;
+}
+
+
+/* 底部end */
