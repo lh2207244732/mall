@@ -34,21 +34,22 @@
     height: 110px;
     background-color: #ffffff;
 }
-.head .logo{
+
+.head .logo {
     float: left;
     line-height: 110px;
 }
-.head .logo h1{
+
+.head .logo h1 {
     height: 110px;
 }
-.head .logo h1 a{
+
+.head .logo h1 a {
     font-size: 30px;
     font-weight: bold;
     color: #52c41a;
 }
-.head .head-right{
-    float: left;
-}
+
 .head .head-right {
     float: left;
     height: 110px;
@@ -91,13 +92,16 @@
     margin-top: 23px;
     margin-right: 41px;
 }
-.head .nav-list .nav-item .active{
+
+.head .nav-list .nav-item .active {
     color: #52c41a;
 }
+
 .head .nav-list .nav-item a {
     font-size: 16px;
     color: #333333;
 }
+
 
 /* 主体 */
 
@@ -105,30 +109,37 @@
     /* height: 800px; */
     background-color: #eeeeee;
 }
-.main .crumb{
+
+.main .crumb {
     height: 40px;
     line-height: 40px;
     /* background-color: pink; */
 }
-.main .crumb a{
+
+.main .crumb a {
     font-size: 14px;
 }
-.container .aside{
+
+.container .aside {
     float: left;
 }
-.container .con-nav{
+
+.container .con-nav {
     width: 186px;
     padding: 10px;
     /* height: 686px; */
     border: 1px solid #d9d9d9;
 }
-.container .con-nav .con-nav-item{
+
+.container .con-nav .con-nav-item {
     padding: 5px;
 }
-.container .con-nav .con-nav-item a{
+
+.container .con-nav .con-nav-item a {
     font-size: 16px;
 }
-.container h4{
+
+.container h4 {
     width: 208px;
     height: 40px;
     line-height: 40px;
@@ -137,10 +148,12 @@
     color: #fff;
     background-color: #333333;
 }
-.container .con-product{
+
+.container .con-product {
     float: left;
 }
-.container .con-product .crumb{
+
+.container .con-product .crumb {
     margin-left: 10px;
     margin-bottom: 20px;
     line-height: 32px;
@@ -148,21 +161,24 @@
     font-size: 16px;
     overflow: hidden;
 }
-.container .con-product .default{
+
+.container .con-product .default {
     float: left;
     width: 83px;
     color: #fff;
-    background-color:  #52c41a;
-    border: 1px solid  #52c41a;
+    background-color: #52c41a;
+    border: 1px solid #52c41a;
     cursor: pointer;
 }
-.container .con-product .acod-price{
+
+.container .con-product .acod-price {
     float: left;
     width: 82px;
-    border:1px solid #d9d9d9 ;
+    border: 1px solid #d9d9d9;
     color: rgba(0, 0, 0, 0.45);
     cursor: pointer;
 }
+
 .container .product-list {
     margin-left: 10px;
     margin-bottom: 20px;
@@ -221,14 +237,16 @@
     font-size: 12px;
     color: #929292;
 }
-.con-product .pagin{
+
+.con-product .pagin {
     margin-left: 10px;
     width: 862px;
     height: 32px;
     text-align: center;
     /* background-color: aqua; */
 }
-.con-product .pagin .pagin-item{
+
+.con-product .pagin .pagin-item {
     margin-left: -4px;
     display: inline-block;
     font-size: 12px;
@@ -239,11 +257,14 @@
     border: 1px solid #d9d9d9;
     text-align: center;
     cursor: pointer;
-}    
-.con-product .pagin .active{
+}
+
+.con-product .pagin .active {
     border-color: #52c41a;
     background-color: #52c41a;
 }
+
+
 /* 底部 */
 
 .footer {
