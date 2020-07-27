@@ -55,13 +55,13 @@
     height: 110px;
 }
 
-.head .serach-box {
+.head .search-box {
     margin-top: 18px;
     width: 514px;
     height: 42px;
 }
 
-.head .serach-box .search-input input {
+.head .search-box .search-input input {
     float: left;
     padding-left: 10px;
     width: 400px;
@@ -71,7 +71,7 @@
     outline: none;
 }
 
-.head .serach-box .search-input .search-btn {
+.head .search-box .search-input .search-btn {
     float: right;
     width: 102px;
     height: 42px;
@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 
-.head .serach-box .search-input .search-btn:hover {
+.head .search-box .search-input .search-btn:hover {
     opacity: .6;
 }
 
