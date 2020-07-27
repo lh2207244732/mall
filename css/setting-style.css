@@ -155,9 +155,9 @@
 }
 .main-bd .main-bd-info .item{
     height: 100px;
-    line-height: 100px;
     margin-top: 10px;
     border-top: 1px dashed #cccccc;
+    overflow: hidden;
 }
 .main-bd .main-bd-info .username {
     border: 0;
@@ -170,17 +170,53 @@
     vertical-align: middle;
     background-color: red;
 }
-.main-bd .main-bd-info .username span{
-    font-size: 18px;
+.main-bd .main-bd-info .box{
+    margin-top: 34px;
+    width: 352px;
+    height: 32px;
+    line-height: 32px;
 }
+.main-bd .main-bd-info .box i{
+    float: left;
+    /* display: inline-block; */
+    background-color: #f3f3f3;
+    width: 30px;
+    text-align: center;
+    border: 1px solid #bdbdbd;
+    
+}
+.main-bd .main-bd-info .box input{
+    float: left;
+    width: 250px;
+    height: 34px;
+    line-height: 30px;
+    outline: none;
+    border: none;
+    border-top: 1px solid #bdbdbd;
+    border-bottom:1px solid #bdbdbd;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.main-bd .main-bd-info .box span{
+    float: left;
+    width: 70px;
+    height: 34px;
+    line-height: 32px;
+    text-align: center;
+    color: #fff;
+    background-color: #52c41a;
+    cursor: pointer;
+}
+.main-bd .main-bd-info .box span:hover{
+    opacity: .8;
+}
+
+
 .main-bd .main-bd-info .iconfont{
     font-size: 16px;
     color: rgba(0, 0, 0, .65);
 }
-.main-bd .main-bd-info .item{
-    font-size: 16px;
-    color: rgba(0, 0, 0, .65);
-}
+/* 底部开始 */
 .footer {
     height: 252px;
     background-color: #2f2f2f;
