@@ -4,22 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>轮播图</title>
+    <title>轮播图面向对象</title>
     <style>
         * {
             margin: 0;
             padding: 0;
         }
+        
+        li {
+            list-style: none;
+        }
+        
+        .carousel-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-wrap .carousel-imgs {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .carousel-wrap .left-btn {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .carousel-wrap .carousel-btns {
+            position: absolute;
+            right: 30px;
+            bottom: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="wrap"></div>
+    <div id="carousel-wrap"></div>
 </body>
 <script>
-    function SolidShow(options) {
+    function Carousel(options) {
         //1.罗列属性
+        this.id = options.id
+        this.carouselWrap = document.getElementById(this.id)
+        this.width = options.width
+        this.height = options.height
+        this.imgs = options.imgs
+        this.len = this.imgs.length
+        this.interval = options.interval
+            //2初始化
+        this.init()
     }
-</script>
+    Carousel.prototype = {
+        constructor: Carousel,
+        init: function() {
+            this.carouselWrap.className = 'carousel-wrap'
+            this.carouselWrap.style.width = this.width + 'px'
+            this.carouselWrap.style.height = this.height + 'px'
+            this.carouselImgs = document.createElement('ul')
+            this.carouselImgs.className = 'carousel-imgs'
+            this.leftBtn = document.createElement('span')
+            this.leftBtn.className = 'left-btn'
+            this.rightBtn = document.createElement('span')
+            this.leftBtn.className = 'right-btn'
+            this.carouselBtns = document.createElement('ul')
+            this.carouselBtns.className = 'carousel-btns'
+            for (var i = 0; i < this.len; i++) {
+                this.imgsItem = document.createElement('li')
+                var img = document.createElement('img')
+                img.src = this.imgs[i]
+                this.btnItem = document.createElement('li')
+                this.imgsItem.appendChild(img)
+                this.carouselImgs.appendChild(this.imgsItem)
+            }
+            this.carouselWrap.appendChild(this.carouselImgs)
+            this.carouselWrap.appendChild(this.leftBtn)
+            this.carouselWrap.appendChild(this.rightBtn)
 
-</html>
+
+        }
+    }
+    new Carousel({
+        id: 'carousel-wrap',
+        imgs: [
+            './images/solid1.jpg',
+            './images/solid2.jpg',
+            './images/solid3.jpg'
+        ],
+        width: 830,
+        height: 482,
+        interval: 2000
+    })
+</script>
