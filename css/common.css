@@ -189,6 +189,7 @@ a.btn:hover {
 }
 
 .carousel-wrap .carousel-btns .btnItem {
+    position: relative;
     float: left;
     margin-left: 10px;
     width: 20px;
