@@ -29,7 +29,7 @@
 }
 
 .top .nav-list .cart-box .cart-content {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 30px;
     right: 0;
@@ -221,62 +221,8 @@
     background-color: #dddddd;
 }
 
-.focus .solidshow {
-    position: relative;
+.focus #carousel-wrap {
     float: right;
-    height: 440px;
-    background-color: aqua;
-}
-
-.focus .solidshow img {
-    width: 100%;
-    height: 100%;
-}
-
-.focus .solidshow .prev {
-    position: absolute;
-    top: 50%;
-    margin-top: -22px;
-    left: 0;
-    width: 27px;
-    height: 44px;
-    background-image: url(../images/prev.svg);
-    cursor: pointer;
-}
-
-.focus .solidshow .next {
-    position: absolute;
-    top: 50%;
-    margin-top: -22px;
-    right: 0;
-    width: 27px;
-    height: 44px;
-    background-image: url(../images/next.svg);
-    cursor: pointer;
-}
-
-.focus .solidshow .box {
-    position: absolute;
-    left: 50%;
-    margin-left: -42px;
-    bottom: 10px;
-    width: 84px;
-    height: 24px;
-}
-
-.focus .solidshow .box span {
-    display: inline-block;
-    margin: 0 4px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    /* background-color: royalblue; */
-    background-color: rgba(0, 0, 0, .8);
-    cursor: pointer;
-}
-
-.focus .solidshow .box .active {
-    background-color: #52c41a;
 }
 
 
