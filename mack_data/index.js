@@ -7,24 +7,73 @@ if (USE_MOCK) {
 }
 // 下拉购物车
 Mock.mock('/carts', 'get', {
-    "code": 0,
-    "data": {
-        "allChecked": "@boolean",
-        "totalCartPrice|1-9999": 1,
-        "_id": "@string('lower',24)",
-        "cartList|0-10": [{
-            "count|1-10": 1,
-            "totalPrice|1-9999": 1,
-            "checked": "@boolean",
+        "code": 0,
+        "data": {
+            "allChecked": "@boolean",
+            "totalCartPrice|1-9999": 1,
             "_id": "@string('lower',24)",
-            "product": {
+            "cartList|0-10": [{
+                "count|1-10": 1,
+                "totalPrice|1-9999": 1,
+                "checked": "@boolean",
                 "_id": "@string('lower',24)",
-                "name": "@cword(3, 120)",
-                "mainImage": "@dataImage('200x200')",
-                "price|1-9999": 1,
-                "stock|1-9999": 1
-            },
-            "attr": "颜色:白色;"
+                "product": {
+                    "_id": "@string('lower',24)",
+                    "name": "@cword(3, 120)",
+                    "mainImage": "@dataImage('200x200')",
+                    "price|1-9999": 1,
+                    "stock|1-9999": 1
+                },
+                "attr": "颜色:白色;"
+            }]
+        }
+    })
+    // 搜索区域
+Mock.mock(/\/products\/search/, 'get', {
+        "code": 0,
+        "data|0-10": [{
+            "_id": "@string('lower',24)",
+            "name": "@cword(3, 120)",
         }]
-    }
+    })
+    // 焦点区域
+Mock.mock('/categories/arrayCategories', 'get', {
+        "code": 0,
+        "data|10": [{
+            "level": 1,
+            "isShow": "1",
+            "isFloor": "0",
+            "order": 0,
+            "_id": "@string('lower',24)",
+            "name": "@cword(4)",
+            "mobileName": "@cword(4)",
+            "icon": "https://api.mall.kuazhu.com/category-icons/1595243404358.jpg"
+        }]
+    })
+    // 焦点右侧区域
+Mock.mock(/\/categories\/childArrayCategories/, 'get', {
+        "code": 0,
+        "data|10": [{
+            "level": 2,
+            "isShow": "1",
+            "isFloor": "0",
+            "order": 0,
+            "_id": "@string('lower',24)",
+            "name": "@cword(4)",
+            "mobileName": "@cword(4)",
+            "icon": "@dataImage('200x200')"
+        }]
+    })
+    // 添加轮播图接口数据
+Mock.mock(/\/ads\/positionAds/, 'get', {
+    "code": 0,
+    "data|3-7": [{
+        "position": "1",
+        "order": 0,
+        "isShow": "1",
+        "_id": "@string('lower',24)",
+        "name": "@word(4)",
+        "image": "@dataImage('862x440')",
+        "link": "http://mall.kuazhu.com/detail.html?productId=5ea68e9e5dbe7a0023712b03"
+    }, ]
 })

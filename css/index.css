@@ -116,6 +116,7 @@
     height: 110px;
     border-bottom: 1px solid #52c41a;
     background-color: #fff;
+    margin-bottom: 30px;
 }
 
 .head .logo {
@@ -139,6 +140,7 @@
 }
 
 .head .serach-box {
+    position: relative;
     margin-top: 18px;
     width: 514px;
     height: 42px;
@@ -170,6 +172,35 @@
     opacity: .6;
 }
 
+.head .search-layer {
+    display: none;
+    width: 414px;
+    position: absolute;
+    top: 42px;
+    left: 0;
+    border: 1px solid #52c41a;
+    border-top: none;
+    box-sizing: border-box;
+    background: #fff;
+    z-index: 999;
+}
+
+.head .search-item {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.head .search-item:hover {
+    background-color: #f3f5f7;
+}
+
 .head .nav-list .nav-item {
     float: left;
     margin-top: 23px;
@@ -192,37 +223,81 @@
 /* 焦点区域start */
 
 .focus {
-    margin-top: 30px;
-    height: 440px;
-    box-sizing: border-box;
-    overflow: hidden;
+    margin-bottom: 40px;
 }
 
-.focus .aside {
+.focus .categories {
     float: left;
     height: 440px;
+    width: 208px;
+    margin-right: 10px;
     background-color: #fff;
+    position: relative;
 }
 
-.focus .aside .nav-list {
-    margin-top: 20px;
+.focus .categories .parent-categories {
+    padding: 20px 0;
 }
 
-.focus .aside .nav-list .nav-item {
-    height: 40px;
+.focus .categories .parent-categories .parent-categories-item {
     line-height: 40px;
+    padding-left: 10px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
-.focus .aside .nav-list .nav-item a {
-    margin-left: 10px;
+.focus .categories .parent-categories .parent-categories-item:hover {
+    background-color: #eee;
+    color: #1890ff;
 }
 
-.focus .aside .nav-list .nav-item:hover {
-    background-color: #dddddd;
+.focus .categories .parent-categories .parent-categories-item.active {
+    background-color: #eee;
+    color: #1890ff;
 }
 
-.focus #carousel-wrap {
-    float: right;
+.focus .categories .child-categories {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 208px;
+    width: 872px;
+    height: 100%;
+    z-index: 2000;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 10px 50px;
+    overflow: hidden;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.focus .categories .child-item {
+    padding: 10px;
+    width: 80px;
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.focus .categories .child-item img {
+    width: 100%;
+    height: 80px;
+}
+
+.focus .categories .child-item p {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.focus #swiper {
+    float: left;
+    width: 862px;
+    height: 440px;
+    position: relative;
 }
 
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/rest.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./libs/carousel/carousel.css">
     <link rel="stylesheet" href="./font_1963752_jyu4aurwv1/iconfont.css">
 </head>
 
@@ -22,24 +23,6 @@
                         <i class="iconfont shop-car">&#xe619;</i> 购物车( <span class="cart-count">0</span> )
                     </a>
                     <div class="cart-content">
-                        <!-- 等待框 -->
-                        <!-- <div class="loader"></div> -->
-                        <!-- 购物车没有东西时显示 -->
-                        <!-- <span class="empty-cart">购物车中还没有商品,赶紧来购买吧!</span> -->
-                        <!-- 当购物车中有东西时 -->
-
-                        <!-- <span class="cart-tip">最近加入的宝贝</span>
-                        <ul>
-                            <li class="cart-item clearfix">
-                                <a href="#" target="_blank">
-                                    <img src="" alt="">
-                                    <span class="text-ellipsis">商品名称</span>
-                                </a>
-                                <span class="product-count">x 9 </span><span class="product-price">1719</span>
-                            </li>
-                        </ul>
-                        <span class="line"></span>
-                        <a href="/cart.html" class="btn cart-btn">查看我的购物车</a> -->
                     </div>
                 </li>
                 <li class="nav-item">
@@ -62,10 +45,14 @@
             </div>
             <div class="head-right clo-4">
                 <div class="serach-box clearfix">
-                    <div class="search-input"><input type="text" placeholder="请输入商品名称关键字">
-                        <div class="search-btn">搜索</div>
+                    <div class="search-input">
+                        <input type="text" placeholder="请输入商品名称关键字">
+                        <a href="javascript:;" class="search-btn">搜索</a>
+                        <ul class="search-layer">
+                        </ul>
                     </div>
                 </div>
+
                 <ul class="nav-list">
                     <li class="nav-item">
                         <a href="#" class="link active">首页</a>
@@ -78,51 +65,20 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </div>
     <!-- 头部start -->
     <!-- 焦点区域start -->
     <div class="focus w">
-        <div class="aside clo-1">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <a href="#" class="link"> 手机通讯</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">食品生鲜 </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">汽车保养</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">内衣配饰</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">母婴童装</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">美妆护肤</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">酒水饮料</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">个护清洁</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">家用电器</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="link">电脑耗材</a>
-                </li>
-            </ul>
-        </div>
-        <div id="carousel-wrap">
-            <!-- <a href="#"><img src="./images/solid1.jpg" alt=""><img src="./images/solid2.jpg" alt=""><img src="./images/solid3.jpg" alt=""></a>
-            <div class="prev"></div>
-            <div class="next"></div>
-            <div class="box"><span class="active"></span><span></span><span></span></div> -->
+        <div class="container clearfix">
+            <div class="categories col-1 col-gap">
+                <div class="parent-categories">
+                </div>
+                <div class="child-categories">
+                </div>
+            </div>
+            <div id="swiper">
+            </div>
         </div>
     </div>
     <!-- 焦点区域end -->
@@ -257,6 +213,7 @@
 <script src="./js/utils.js"></script>
 <script src="./libs/mock/mock.js"></script>
 <script src="./mack_data/index.js"></script>
+<script src="./libs/carousel/carousel.js"></script>
 <script src="./js/index.js"></script>
 
 </html>
