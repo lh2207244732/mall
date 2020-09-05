@@ -12,10 +12,17 @@
             this.categories = d.querySelector('.categories')
             this.parentCategories = d.querySelector('.parent-categories')
             this.childCategories = d.querySelector('.child-categories')
+            this.productList = d.querySelector('.hot .product-list')
+            this.floor = d.querySelector('.floor')
+            this.elevator = d.querySelector('.elevator')
+            this.searchTimer = null
             this.handleCart()
             this.handSearch()
             this.handCategories()
             this.handCarousel()
+            this.handProductList()
+            this.handFloor()
+            this.handElevator()
         },
         handleCart: function() {
             var _this = this
@@ -88,34 +95,64 @@
                 }, false)
                 // 监听输入事件,自动提示
             this.searchVal.addEventListener('input', function() {
-                // 显示下拉框
-                utils.show(_this.searchLayer)
-                    // 获取内容
-                _this.getSearchData()
+                    if (_this.searchTimer) {
+                        console.log(111);
+                        clearInterval(_this.searchTimer)
+                    }
+                    _this.searchTimer = setTimeout(function() {
+                        _this.getSearchData()
+                    }, 500)
+                }, false)
+                // 点击其他地方时，隐藏下拉框
+            d.addEventListener('click', function() {
+                    utils.hide(_this.searchLayer)
+                }, false)
+                // 阻止输入框的点击操作冒泡
+            this.searchVal.addEventListener('click', function(ev) {
+                    ev.stopPropagation()
+                }, false)
+                // 监听重新获取光标时
+            this.searchVal.addEventListener('focus', function() {
+                // 获取输入框内容
+                var keyword = _this.searchVal.value
+                if (!keyword) {
+                    _this.searchLayer.innerHTML = ''
+                    utils.hide(_this.searchLayer)
+                } else {
+                    // 显示下拉框
+                    utils.show(_this.searchLayer)
+                }
             }, false)
+
+
         },
         getSearchData: function() {
             var _this = this
             var keyword = this.searchVal.value
-            utils.ajax({
-                url: '/products/search',
-                data: {
-                    keyword: keyword
-                },
-                success: function(data) {
-                    if (data.code == 0) {
-                        _this.renderSearch(data.data)
+            if (!keyword) {
+                _this.searchLayer.innerHTML = ''
+                utils.hide(_this.searchLayer)
+            } else {
+                utils.ajax({
+                    url: '/products/search',
+                    data: {
+                        keyword: keyword
+                    },
+                    success: function(data) {
+                        if (data.code == 0) {
+                            _this.renderSearch(data.data)
+                        }
                     }
-                }
-            })
+                })
+            }
         },
         renderSearch: function(list) {
             var len = list.length
-            console.log(list)
             var html = ''
             for (var i = 0; i < len; i++) {
                 html += `<li class="search-item">${list[i].name}</li>`
             }
+            utils.show(this.searchLayer)
             this.searchLayer.innerHTML = html
         },
         //提交
@@ -215,6 +252,74 @@
                 height: 440,
                 playInterval: 2000
             })
+        },
+        handProductList: function() {
+            var _this = this
+            utils.ajax({
+                method: 'GET',
+                url: '/products/hot',
+                success: function(data) {
+                    _this.renderProductItem(data.data)
+                }
+            })
+        },
+        renderProductItem: function(list) {
+            var html = ''
+            for (var i = 0, len = list.length; i < len; i++) {
+                html += `<li class="product-item clo-1">
+                <a href="#" class=""><img src="${list[i].mainImage}" alt="">
+                    <p class="product-name">${list[i].name}</p>
+                    <p class="product-price-box"><span class="product-price">&yen;${list[i].price}</span><span class="product-num">${list[i].payNums}人已经购买</span></p>
+                </a>
+            </li>`
+            }
+            this.productList.innerHTML = html
+        },
+        handFloor: function() {
+            var _this = this
+            utils.ajax({
+                method: 'GET',
+                url: '/floors',
+                success: function(data) {
+                    if (data.code == 0) {
+                        _this.renderFloor(data.data)
+                    }
+                }
+            })
+        },
+        renderFloor: function(list) {
+            var html = ''
+                // console.log(111)
+            for (var i = 0, len = list.length; i < len; i++) {
+
+                html += `<div class="f1 clearfix f">
+                <div class="floor-title">
+                    <a href="#" class="link">
+                        <h2>F${list[i].num} ${list[i].title}</h2>
+                    </a>
+                </div>
+                <ul class="floor-list ">
+                `
+                for (var j = 0, len2 = list[i].products.length; j < len2; j++) {
+                    var product = list[i].products[j]
+                    html += `<li class="floor-item clo-1">
+                    <a href="#"><img src="${product.mainImage}" alt=""></a>
+                    <p class="product-name">${product.name}</p>
+                    <p class="product-price-box">
+                    <span class="product-price">&yen;${product.price}</span>
+                    <span class="product-num">${product.payNums}人已购买</span>
+                    </p>
+                </li>`
+                }
+                html += `</ul>
+            </div>`
+            }
+
+            this.floor.innerHTML = html
+        },
+        handElevator: function() {
+            var _this = this
+
         }
     }
     page.init()
