@@ -16,6 +16,8 @@
             this.floor = d.querySelector('.floor')
             this.elevator = d.querySelector('.elevator')
             this.searchTimer = null
+            this.categoriesTimer = null
+            this.floors = null
             this.handleCart()
             this.handSearch()
             this.handCategories()
@@ -28,8 +30,8 @@
             var _this = this
                 // 显示购物车中商品数量
             this.loadCartsCount()
-                // 显示下拉购物车
             this.cartBox.addEventListener('mouseenter', function() {
+                    // 显示下拉购物车
                     utils.show(_this.cartContent)
                         //添加等待框动画
                     _this.cartContent.innerHTML = '<div class="loader"></div>'
@@ -45,6 +47,9 @@
                                 //请求失败
                                 _this.cartContent.innerHTML = '<span class="empty-cart">请求失败,请稍后再试</span>'
                             }
+                        },
+                        error: function() {
+                            _this.cartContent.innerHTML = '<span class="empty-cart">请求失败,请稍后再试</span>'
                         }
                     })
                 }, false)
@@ -95,6 +100,7 @@
                 }, false)
                 // 监听输入事件,自动提示
             this.searchVal.addEventListener('input', function() {
+                    // 防抖，多次输入，只执行最后一次
                     if (_this.searchTimer) {
                         console.log(111);
                         clearInterval(_this.searchTimer)
@@ -162,22 +168,31 @@
         },
         handCategories: function() {
             var _this = this
+                // 获取父级分类
             this.getParentitems()
-                // 监听移入事件
+                // 利用事件代理监听父元素中子元素的切换
             this.parentCategories.addEventListener('mouseover', function(ev) {
-                var elem = ev.target
-                if (elem.className == 'parent-categories-item') {
-                    var pid = elem.getAttribute('data-id')
-                        // 显示右侧面板
-                    utils.show(_this.childCategories)
-                        // 获取生成面板内容
-                    _this.getChildCategories(pid)
-                }
-            }, false)
+                    //添加防抖
+                    if (_this.categoriesTimer) {
+                        clearTimeout(_this.categoriesTimer)
+                    }
+                    setTimeout(function() {
+                        var elem = ev.target
+                        if (elem.className == 'parent-categories-item') {
+                            // 获取触发事件元素的ID
+                            var pid = elem.getAttribute('data-id')
+                                // 显示右侧面板
+                            utils.show(_this.childCategories)
+                                // 获取要生成的面板内容
+                            _this.getChildCategories(pid)
+                        }
+                    }, 100)
+                }, false)
+                //监听鼠标移出事件
             this.categories.addEventListener('mouseleave', function() {
-                //隐藏右侧内容
+                //清除右侧内容并隐藏右侧内容
+                _this.childCategories.innerHTML = ''
                 utils.hide(_this.childCategories)
-
             }, false)
         },
         getParentitems: function() {
@@ -186,10 +201,14 @@
                 url: '/categories/arrayCategories',
                 success: function(data) {
                     if (data.code == 0) {
-                        _this.addParentCategories(data.data)
+                        //渲染父级分类内容
+                        _this.renderParentCategories(data.data)
                     } else {
                         this.parentCategories.innerHTML = data.messgae
                     }
+                },
+                error: function() {
+                    this.parentCategories.innerHTML = data.messgae
                 }
             })
         },
@@ -202,12 +221,13 @@
                 },
                 success: function(data) {
                     if (data.code == 0) {
+                        // 渲染面板内容
                         _this.renderChildCategoies(data.data)
                     }
                 }
             })
         },
-        addParentCategories: function(list) {
+        renderParentCategories: function(list) {
             var len = list.length
             var html = '<ul>'
             for (var i = 0; i < len; i++) {
@@ -288,11 +308,12 @@
             })
         },
         renderFloor: function(list) {
+            // 楼层结构
             var html = ''
-                // console.log(111)
+                // 电梯结构
+            var elevatorHtml = ''
             for (var i = 0, len = list.length; i < len; i++) {
-
-                html += `<div class="f1 clearfix f">
+                html += `<div class="floor-wrap clearfix f">
                 <div class="floor-title">
                     <a href="#" class="link">
                         <h2>F${list[i].num} ${list[i].title}</h2>
@@ -313,13 +334,34 @@
                 }
                 html += `</ul>
             </div>`
+                elevatorHtml += `<a href="javascript:;" class="elevator-item">
+            <span class="elevator-item-num">F${list[i].num}</span>
+            <span class="elevator-item-text text-ellipsis" data-num="${i}">${list[i].title}</span>
+            </a>`
             }
-
+            elevatorHtml += `<a href="javascript:;" class="backToTop">
+            <span class="elevator-item-num"><i class="iconfont icon-arrow-up"></i></span>
+            <span class="elevator-item-text text-ellipsis" id="backToTop">顶部</span>
+        </a>`
+                // 楼层结构
             this.floor.innerHTML = html
+                // 电梯结构
+            this.elevator.innerHTML = elevatorHtml
+            this.floors = d.querySelectorAll('.floor-wrap')
         },
         handElevator: function() {
             var _this = this
-
+                // 点击电梯，到达指定楼层
+            this.elevator.addEventListener('click', function(ev) {
+                var elem = ev.target
+                var num = elem.getAttribute('data-num')
+                if (elem.id == 'backToTop') {
+                    d.documentElement.scrollTop = 0
+                } else if (elem.className == 'elevator-item-text text-ellipsis') {
+                    var floor = _this.floors[num]
+                    d.documentElement.scrollTop = floor.offsetTop
+                }
+            }, false)
         }
     }
     page.init()
